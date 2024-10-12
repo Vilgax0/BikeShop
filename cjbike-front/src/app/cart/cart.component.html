@@ -1,0 +1,91 @@
+<!-- Sección de Carrito de Bicicletas -->
+<app-head></app-head>
+
+<!-- Sección de Miga de Pan -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <p>Bicicletas Frescas y Orgánicas</p>
+          <h1>Carrito</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin de la Sección de Miga de Pan -->
+
+<!-- Contenido del Carrito -->
+<div class="cart-section mt-150 mb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        <div class="cart-table-wrap">
+          <table class="cart-table">
+            <thead class="cart-table-head">
+              <tr class="table-head-row">
+                <th class="product-remove"></th>
+                <th class="product-image">Imagen del Producto</th>
+                <th class="product-name">Nombre</th>
+                <th class="product-price">Precio</th>
+                <th class="product-quantity">Cantidad</th>
+                <th class="product-total">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Productos del Carrito -->
+              <tr *ngFor="let producto of carrito" class="table-body-row">
+                <td class="product-remove"><a (click)="removerDelCarrito(producto)"><i class="far fa-window-close"></i></a></td>
+                <td class="product-image"><img [src]="producto.img" alt=""></td>
+                <td class="product-name">{{ producto.nombre }}</td>
+                <td class="product-price">{{ (producto.precio | currency:'USD':'symbol':'1.0-0') }}</td>
+                <td class="product-quantity">
+                  <input type="number" [(ngModel)]="producto.cantidad" (change)="actualizarCantidad(producto)" placeholder="0">
+                </td>
+                <td class="product-total">{{ (producto.precio * producto.cantidad | currency:'USD':'symbol':'1.0-0') }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button (click)="actualizarCarrito()" class="btn btn-primary mt-3">Actualizar Carrito</button>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <!-- Resumen del Pedido -->
+        <div class="total-section">
+          <table class="total-table">
+            <thead class="total-table-head">
+              <tr class="table-total-row">
+                <th>Total</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="total-data">
+                <td><strong>Subtotal: </strong></td>
+                <td>{{ (calcularSubtotal() | currency:'USD':'symbol':'1.0-0') }}</td>
+              </tr>
+              <tr class="total-data">
+                <td><strong>Envío: </strong></td>
+                <td>{{ (1 | currency:'USD':'symbol':'1.0-0') }}</td>
+              </tr>
+              <tr class="total-data">
+                <td><strong>Total: </strong></td>
+                <td>{{ (calcularTotal() | currency:'USD':'symbol':'1.0-0') }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="cart-buttons">
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin del Contenido del Carrito -->
+
+<app-footer></app-footer>
+
+<!-- Agrega el parámetro currency=USD al script de PayPal -->

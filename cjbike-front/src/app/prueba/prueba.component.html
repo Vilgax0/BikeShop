@@ -1,0 +1,9 @@
+<div *ngFor="let producto of productos">
+    <h3>{{ producto.nombre }}</h3>
+    <p>{{ producto.descripcion }}</p>
+    <p>Precio: ${{ producto.precio }}</p>
+    <img [src]="producto.img" alt="{{ producto.nombre }}">
+    <!-- Aquí puedes mostrar más detalles del producto según tus necesidades -->
+    <hr>
+  </div>
+  

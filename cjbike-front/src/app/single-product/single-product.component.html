@@ -1,0 +1,52 @@
+<app-head></app-head>
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <p>Conoce más</p>
+          <h1>{{ producto.nombre }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- single product -->
+<div class="single-product mt-150 mb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="single-product-img">
+          <img [src]="producto.img" alt="">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="single-product-content">
+          <h3>{{ producto.nombre }}</h3>
+          <p class="single-product-pricing"><span>Por unidad</span> ${{ producto.precio }}</p>
+          <p>{{ producto.descripcion }}</p>
+          <!-- single-product.component.html -->
+          <div class="single-product-form">
+            <form action="index.html">
+              <input type="number" placeholder="0" [(ngModel)]="cantidad" name="cantidad">
+            </form>
+            <a (click)="addToCart()" class="cart-btn"><i class="fas fa-shopping-cart"></i> Añadir al carrito</a>
+          </div>
+          <h4>Compartir:</h4>
+          <ul class="product-share">
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+            <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end single product -->
+<app-footer></app-footer>
