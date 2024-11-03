@@ -6,6 +6,9 @@ async function registro(req, res) {
   try {
     const { name, email, password} = req.body;
 
+    if(!email || !password || !name){
+      return res.status(400).json({message: "Faltan datos"});
+    }
     const nameExists = await usersRef.where('usuario', '==', name).get();
 
     if (!nameExists.empty) {

@@ -5,7 +5,9 @@ const router = express.Router();
 async function aprobarOrden(req, res) {
   try {
     const { orderId, orderDetails } = req.body;
-
+    if(!orderId || !orderDetails){
+      return res.status(400).json({message: "Faltan datos o error en los datos"});
+    }
     // Crea un nuevo documento en la colección de órdenes con los detalles de la orden
     const ordenRef = admin.firestore().collection('ordenes').doc(orderId);
     await ordenRef.set(orderDetails);
