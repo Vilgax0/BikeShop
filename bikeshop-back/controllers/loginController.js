@@ -10,6 +10,9 @@ async function Login(req, res) {
   try {
     const { email, password } = req.body;
 
+    if(!email || !password){
+      return res.status(400).json({message: "Faltan datos"});
+    }
     // Inicia sesión con correo electrónico y contraseña
     const userCredential = await firebaseAuth.signInWithEmailAndPassword(auth, email, password);
 

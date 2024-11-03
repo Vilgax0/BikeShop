@@ -3,7 +3,9 @@ const admin = require('firebase-admin');
 async function aumentarStock(req, res) {
   try {
     const { id, cantidad } = req.body;
-
+    if(!id || !cantidad || cantidad <=0){
+      return res.status(400).json({message: "Faltan datos o error en los datos"});
+    }
     // Obtiene el documento del producto en base al id proporcionado
     const productoRef = admin.firestore().collection('productos').doc(id);
     const productoSnapshot = await productoRef.get();

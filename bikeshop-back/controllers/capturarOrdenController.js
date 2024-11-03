@@ -1,10 +1,11 @@
 const admin = require('firebase-admin');
-const express = require('express');
 
 async function capturarOrden(req, res) {
   try {
     const { orderId, amount } = req.body;
-
+    if(!orderId || !amount || amount <=0){
+      return res.status(400).json({message: "Faltan datos o error en los datos"});
+    }
     // Obtiene el documento de la orden en base al ID proporcionado
     const ordenRef = admin.firestore().collection('ordenes').doc(orderId);
     const ordenSnapshot = await ordenRef.get();
@@ -33,8 +34,5 @@ async function capturarOrden(req, res) {
     return res.status(500).send({ success: false, message: 'Error al capturar la orden' });
   }
 }
-
-
-  
 
 module.exports = capturarOrden;
