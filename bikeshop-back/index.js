@@ -4,7 +4,6 @@ const admin = require('firebase-admin');
 <<<<<<< HEAD
 const serviceAccount = require('C:\\Users\\mkcla\\OneDrive\\Escritorio\\clave.json'); 
 =======
-const serviceAccount = require('C:/Users/USUARIO/Downloads/clave.json'); 
 >>>>>>> c0ed62dade8ef5439d94b4100904c1467f58b5cc
 
 const app = express();
