@@ -1,10 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const admin = require('firebase-admin');
-<<<<<<< HEAD
 const serviceAccount = require('C:\\Users\\mkcla\\OneDrive\\Escritorio\\clave.json'); 
-=======
->>>>>>> c0ed62dade8ef5439d94b4100904c1467f58b5cc
 
 const app = express();
 const PORT = process.env.PORT || 3000;
