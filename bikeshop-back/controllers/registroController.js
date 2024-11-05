@@ -1,5 +1,8 @@
-const admin = require('firebase-admin');
-const db = admin.firestore();
+const firebaseConfig = require('../firebase/config');
+
+const db = firebaseConfig.instance.getDB();
+const auth = firebaseConfig.instance.getAuth();
+
 const usersRef = db.collection('usuarios');
 
 async function registro(req, res) {
@@ -18,7 +21,7 @@ async function registro(req, res) {
     }
 
     // Crea el usuario en Firebase Authentication
-    const userRecord = await admin.auth().createUser({
+    const userRecord = await auth.createUser({
       email,
       password,
       displayName: name,

@@ -1,4 +1,6 @@
-const admin = require('firebase-admin');
+const firebaseConfig = require('../firebase/config');
+
+const db = firebaseConfig.instance.getDB();
 
 async function capturarOrden(req, res) {
   try {
@@ -7,7 +9,7 @@ async function capturarOrden(req, res) {
       return res.status(400).json({message: "Faltan datos o error en los datos"});
     }
     // Obtiene el documento de la orden en base al ID proporcionado
-    const ordenRef = admin.firestore().collection('ordenes').doc(orderId);
+    const ordenRef = db.collection('ordenes').doc(orderId);
     const ordenSnapshot = await ordenRef.get();
 
     // Verifica si la orden existe

@@ -1,4 +1,6 @@
-const admin = require('firebase-admin');
+const firebaseConfig = require('../firebase/config');
+
+const db = firebaseConfig.instance.getDB();
 
 async function aumentarStock(req, res) {
   try {
@@ -7,7 +9,7 @@ async function aumentarStock(req, res) {
       return res.status(400).json({message: "Faltan datos o error en los datos"});
     }
     // Obtiene el documento del producto en base al id proporcionado
-    const productoRef = admin.firestore().collection('productos').doc(id);
+    const productoRef = db.collection('productos').doc(id);
     const productoSnapshot = await productoRef.get();
 
     // Verifica si el producto existe

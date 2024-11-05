@@ -1,9 +1,11 @@
-const admin = require('firebase-admin');
+const firebaseConfig = require('../firebase/config');
+
+const db = firebaseConfig.instance.getDB();
 
 async function obtenerProductos(req, res) {
   try {
     // Obtiene todos los documentos de la colección 'productos'
-    const snapshot = await admin.firestore().collection('productos').get();
+    const snapshot = await db.collection('productos').get();
 
     // Crea un array para almacenar los productos
     let productos = [];

@@ -1,6 +1,7 @@
-const admin = require('firebase-admin');
 const express = require('express');
-const router = express.Router();
+const firebaseConfig = require('../firebase/config');
+
+const db = firebaseConfig.instance.getDB();
 
 async function aprobarOrden(req, res) {
   try {
@@ -9,7 +10,7 @@ async function aprobarOrden(req, res) {
       return res.status(400).json({message: "Faltan datos o error en los datos"});
     }
     // Crea un nuevo documento en la colección de órdenes con los detalles de la orden
-    const ordenRef = admin.firestore().collection('ordenes').doc(orderId);
+    const ordenRef = db.collection('ordenes').doc(orderId);
     await ordenRef.set(orderDetails);
 
     // Retorna el ID de la orden
