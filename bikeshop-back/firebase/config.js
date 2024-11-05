@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('C:\\Users\\mkcla\\OneDrive\\Escritorio\\clave.json');
+const serviceAccount = require('C:/Users/USUARIO/Downloads/clave.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

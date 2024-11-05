@@ -20,5 +20,4 @@ async function aprobarOrden(req, res) {
   }
 }
 
-
 module.exports = aprobarOrden;
