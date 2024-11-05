@@ -1,7 +1,7 @@
 const admin = require('firebase-admin');
 //C:/Users/USUARIO/Downloads/clave.json
 //C:\\Users\\mkcla\\OneDrive\\Escritorio\\clave.json
-const serviceAccount = require('C:/Users/USUARIO/Downloads/clave.json');
+const serviceAccount = require('C:\\Users\\mkcla\\OneDrive\\Escritorio\\clave.json');
 const { initializeApp } = require("firebase/app");
 const firebaseAuth = require('firebase/auth');
 
