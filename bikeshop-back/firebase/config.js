@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('C:/Users/USUARIO/Downloads/clave.json');
+const serviceAccount = require('C:\\Users\\mkcla\\OneDrive\\Escritorio\\clave.json');
 const { initializeApp } = require("firebase/app");
 const firebaseAuth = require('firebase/auth');
 
@@ -41,3 +41,22 @@ class FirebaseAdmin {
 const instance = new FirebaseAdmin();
 
 module.exports = {instance, auth};
+
+
+/*
+const admin = require('firebase-admin');
+const serviceAccount = require('C:\\Users\\mkcla\\OneDrive\\Escritorio\\clave.json');
+
+// Inicializa solo `firebase-admin` con el archivo de credenciales de servicio.
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://jcbike-74f69-default-rtdb.firebaseio.com"
+});
+
+// Configura Firestore y autenticación.
+const db = admin.firestore();
+const auth = admin.auth();
+
+// Exporta las instancias de `db` y `auth` directamente.
+module.exports = { db, auth };
+*/
