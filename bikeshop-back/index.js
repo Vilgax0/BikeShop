@@ -40,3 +40,9 @@ app.post('/prueba', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en el puerto ${PORT}`);
 });
+
+process.on('SIGINT', async () => {
+  console.log('Cerrando la aplicación...');
+  await config.instance.closeFirestoreConnection();
+  process.exit(0);
+});
