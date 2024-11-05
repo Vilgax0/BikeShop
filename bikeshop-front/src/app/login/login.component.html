@@ -12,6 +12,9 @@
         <div class="inputBox">
           <input type="password" [(ngModel)]="password" name="password" required> <i>Contraseña</i>
         </div>
+        <div class= "links" *ngIf="errorMessage" >
+          <p style="color: red;">{{ errorMessage }}</p>
+        </div>     
         <div class="links">
           <p>¿Olvidaste tu Contraseña? </p> <a [routerLink]="['/register']">  Regístrate</a>
         </div>
@@ -20,7 +23,7 @@
           <div class="links2">
             <a [routerLink]="['/home']">Volver Atrás</a>
           </div>
-        </div>
+        </div> 
       </div>
     </form>
    </div>

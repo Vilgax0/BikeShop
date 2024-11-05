@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,12 @@ export class LoginComponent {
         // Almacena el token en el localStorage
         localStorage.setItem('token', userData.token);
 
-        window.alert('Bienvenido!');
+        Swal.fire({
+          title: '¡Bienvenido!',
+          text: 'Has iniciado sesión correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
 
         this.router.navigate(['/home']);
       })

@@ -2,8 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const admin = require('firebase-admin');
 const config = require('./firebase/config');
-//C:/Users/USUARIO/Downloads/clave.json
-const serviceAccount = require('C:\\Users\\mkcla\\OneDrive\\Escritorio\\clave.json'); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,13 +16,6 @@ app.use(cors());
 app.use(express.json());
 
 const db = config.instance.getDB();
-
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: 'https://jcbike-74f69-default-rtdb.firebaseio.com'
-// });
-
-// const db = admin.firestore();
 
 const routes = require('./routes/routes');
 app.use('/', routes);

@@ -18,6 +18,9 @@
                       <input type="password" [(ngModel)]="password" name="password" required autocomplete="current-password">
                       <i>Contraseña</i>
                   </div>
+                  <div class= "links" *ngIf="errorMessage" >
+                    <p style="color: red;">{{ errorMessage }}</p>
+                  </div>  
                   <div class="links">
                       <a href="#">¿Deseas iniciar sesión?</a>
                       <a [routerLink]="['/login']">Iniciar Sesión</a>
