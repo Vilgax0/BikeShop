@@ -1,6 +1,8 @@
 const admin = require('firebase-admin');
-const { auth } = require('../firebase/config');
+const config = require('../firebase/config');
 const { signInWithEmailAndPassword } = require('firebase/auth');
+
+const auth = config.auth;
 
 async function Login(req, res) {
   try {

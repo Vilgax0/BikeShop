@@ -17,7 +17,7 @@ app.use((err, req, res, next) => {
 app.use(cors());
 app.use(express.json());
 
-const db = config.db;
+const db = config.instance.getDB();
 
 // admin.initializeApp({
 //   credential: admin.credential.cert(serviceAccount),
